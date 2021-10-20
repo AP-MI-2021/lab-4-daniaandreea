@@ -27,10 +27,30 @@ def test_get_negatives():
     assert get_negatives([3,6,8,9]) ==[]
     assert get_negatives([])==[]
 
+def get_smallest_number_same_last_digit(lst):
+    '''
+    Afiseaza cel mai mic nr cu aceeasi ultima cifra egala cu cifra data.
+    in: lista data
+    out: cel mai mic nr cu proprietatea data
+    '''
+    result=[]
+    c=int(input('Dati cifra:'))
+    for num in lst:
+        if num%10==c:
+            result.append(num)
+        else:
+            num=num+1
+    return min(result)
+
+def test_get_smallest_number():
+    assert get_smallest_number_same_last_digit([12,2,34,15])==2
+    assert get_smallest_number_same_last_digit([13,23,33])==13
+    assert get_smallest_number_same_last_digit([16,76,8,5])==16
+
 def print_menu():
     print('1. Citirea unei liste de numere intregi.')
     print('2. Afisarea tuturor numerelor negative nenule din lista.')
-    print('3. Determinare cea mai lungă subsecvență de numere cu același număr de divizori.')
+    print('3. Afisarea celui mai mic numar cu ultima cifra egala cu o cifra data.')
     print('4. Determinare cea mai lungă subsecvență de palindroame.')
     print('x. Ieșire.')
 
@@ -44,11 +64,11 @@ def main():
             lst = read_list()
         elif option == '2':
             result = get_negatives(lst)
-            print('Cea mai lungă subsecvență cu toate numerele prime este: ')
+            print('Lista cu toate numerele negative nenule: ')
             print(result)
         elif option == '3':
-            result = get_longest_sublist_all_equal_nr_of_divisors(lst)
-            print('Cea mai lungă subsecvență formată doar din elemente cu același număr de divizori este: ')
+            result = get_smallest_number_same_last_digit(lst)
+            print('Cel mai mic nr cu ultima cifra egala cu cifra data este: ')
             print(result)
         elif option == '4':
             result = get_longest_sublist_all_palindrome(lst)
