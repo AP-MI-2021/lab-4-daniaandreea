@@ -42,16 +42,50 @@ def get_smallest_number_same_last_digit(lst):
             num=num+1
     return min(result)
 
-def test_get_smallest_number():
-    assert get_smallest_number_same_last_digit([12,2,34,15])==2
-    assert get_smallest_number_same_last_digit([13,23,33])==13
-    assert get_smallest_number_same_last_digit([16,76,8,5])==16
+
+def is_prime(num):
+    '''
+    Verifică dacă un număr este prim.
+    in: int, numărul de verificat
+    out: True, dacă numărul e prim
+             False, altfel
+    '''
+    
+    if num < 2:
+        return False
+    d = 2
+    while d*d <= num:
+        if num % d == 0:
+            return False
+        d += 1
+    return True
+
+def get_list_superprimes(lst):
+    '''
+    Afiseaza o lista cu toate numerele superprime din lista data.
+    in:lista data
+    out:lista cu numerele superprime
+    '''
+    result=[]
+    for num in lst:
+        if num>0 and is_prime(num)==True:
+            num=num//10
+            n=num
+            if n>0 and is_prime(n)==True:
+                result.append(n)
+    return result
+
+def test_get_list_superprimes():
+    assert get_list_superprimes([123,239,1,4])==[]
+    assert get_list_superprimes([17,23,73])==[23,73]
+    assert get_list_superprimes([223,239,1,4])==[239]
 
 def print_menu():
     print('1. Citirea unei liste de numere intregi.')
     print('2. Afisarea tuturor numerelor negative nenule din lista.')
     print('3. Afisarea celui mai mic numar cu ultima cifra egala cu o cifra data.')
-    print('4. Determinare cea mai lungă subsecvență de palindroame.')
+    print('4. Afisarea tuturor numerelor superprime.')
+    print('5. Afisarea listei obtinute cu schimbarea numerelor pozitive si nenule.')
     print('x. Ieșire.')
 
 
@@ -71,8 +105,8 @@ def main():
             print('Cel mai mic nr cu ultima cifra egala cu cifra data este: ')
             print(result)
         elif option == '4':
-            result = get_longest_sublist_all_palindrome(lst)
-            print('Cea mai lungă subsecvență cu palindroame este: ')
+            result = get_list_superprimes(lst)
+            print('Lista cu toate nr superprime: ')
             print(result)
         elif option == 'x':
             break
@@ -81,4 +115,5 @@ def main():
 
 if __name__ == '__main__':
     test_get_negatives()
+    test_get_list_superprimes()
     main()
