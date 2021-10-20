@@ -8,7 +8,7 @@ def read_list():
         int_list.append(int(str_num))
     return int_list
 
-def get_negatives(elem):
+def get_negatives(lst):
     '''
     Functia afiseaza numerele negative din lista.
     in: lista data de utilizator
@@ -60,4 +60,5 @@ def main():
             print('Opțiune invalidă, reîncearcă!')
 
 if __name__ == '__main__':
+    test_get_negatives()
     main()
