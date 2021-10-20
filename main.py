@@ -68,8 +68,9 @@ def get_list_superprimes(lst):
     '''
     result=[]
     for num in lst:
-        if num>0 and is_prime(num)==True:
-            n=num//10
+        x=num
+        if x>0 and is_prime(x)==True:
+            n=x//10
             if n>0 and is_prime(n)==True:
                 result.append(num)
     return result
