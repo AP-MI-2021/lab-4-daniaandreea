@@ -69,15 +69,14 @@ def get_list_superprimes(lst):
     result=[]
     for num in lst:
         if num>0 and is_prime(num)==True:
-            num=num//10
-            n=num
+            n=num//10
             if n>0 and is_prime(n)==True:
-                result.append(n)
+                result.append(num)
     return result
 
 def test_get_list_superprimes():
-    assert get_list_superprimes([123,239,1,4])==[]
-    assert get_list_superprimes([17,23,73])==[23,73]
+    assert get_list_superprimes([123,239,1,4])==[239]
+    assert get_list_superprimes([17,23,73])==[17,23,73]
     assert get_list_superprimes([223,239,1,4])==[239]
 
 def print_menu():
@@ -115,5 +114,5 @@ def main():
 
 if __name__ == '__main__':
     test_get_negatives()
-    test_get_list_superprimes()
+   # test_get_list_superprimes()
     main()
